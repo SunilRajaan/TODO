@@ -9,26 +9,24 @@
 </head>
 <body>
     <form method="post">
-        {% csrf_token %}
-  <div class="mb-3">
-    <label for="name" class="form-label">Name</label>
-    <input type="text" class="form-control" name="name" required "Enter the todo name..." id="name">
-
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" name="name" required placeholder="Enter the todo name..." id="name">
     </div>
-  <div class="mb-3">
-    <label for="description" class="form-label">Description</label>
-    <textarea class="form-control" required id="description"></textarea>
-  </div>
-  <div class="col-12">
-    <label for="Status">Status</label>
-    <select class="form-select" required id="Status">
-      <option selected>Done..</option>
-      <option value="1">In Progess</option>
-      <option value="2">Not Complete</option>
-      <option value="3">Complete</option>
-    </select>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" name="description" required id="description"></textarea>
+    </div>
+    <div class="col-12">
+        <label for="Status">Status</label>
+        <select class="form-select" name="status" required id="Status">
+            <option value="Done">Done</option>
+            <option value="In progress">In Progress</option>
+            <option value="Not Done">Not Complete</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
     
 </body>
