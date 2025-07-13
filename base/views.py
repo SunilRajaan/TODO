@@ -18,12 +18,18 @@ def create_todo(request):
     return render(request, 'create.html')
 
 
-def edit_todo(request):
+def edit_todo(request, pk):
+    todo_obj = Todo.objects.get(id=pk)
+    form = TodoForms(instance=todo_obj)
     if request.method == 'POST':
-        form = TodoForms(request.POST)
+        form = TodoForms(instance=todo_obj, data=request.POST)
         if form.is_valid():
             form.save()
             return redirect('home')
-    else:
-        form = TodoForms()
+    
     return render(request, 'edit.html', context={'form':form})
+
+def delete_todo(request, pk):
+    todo_obj = Todo.objects.get(id=pk)
+    todo_obj.delete()
+    return redirect('home')
