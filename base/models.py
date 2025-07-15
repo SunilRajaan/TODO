@@ -6,4 +6,5 @@ class Todo(models.Model):
     description = models.TextField()
     status = models.CharField(max_length=300)
 
-    
+class TodoType(models.Model):
+    name = models.CharField(max_length=100)    

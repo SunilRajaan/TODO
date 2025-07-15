@@ -16,12 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from base.views import home, create_todo, edit_todo, delete_todo
+from base.views import home, todo_types, create_todo, edit_todo, delete_todo, create_todo_types, edit_todo_types, delete_todo_types
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', home, name='home'),
     path('create/todo/', create_todo, name='create_todo'),
     path('edit/todo/<int:pk>', edit_todo, name='edit_todo'),
-    path('delete/todo/<int:pk>', delete_todo, name='delete_todo')
+    path('delete/todo/<int:pk>', delete_todo, name='delete_todo'),
+    # Todos TYPES 
+    path("todo_types/", todo_types, name='todo_types'),
+    path('create/types', create_todo_types, name='create_types'),
+    path('edit/types/<int:pk>/', edit_todo_types, name='edit_types'),
+    path('delete/types/<int:pk>/', delete_todo_types, name='delete_types'),
 ]

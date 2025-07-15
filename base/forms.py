@@ -1,5 +1,5 @@
 from django import forms
-from .models import Todo
+from .models import Todo, TodoType
 
 class TodoForms(forms.ModelForm):
     class Meta:
@@ -12,3 +12,11 @@ class TodoForms(forms.ModelForm):
 
         }
 
+class TodoTypeForm(forms.ModelForm):
+    class Meta:
+        model = TodoType
+        fields = '__all__'
+
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control mb-3'}),
+        }
