@@ -11,22 +11,32 @@
     <form method="post">
     {% csrf_token %}
     <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" name="name" required placeholder="Enter the todo name..." id="name">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" name="name"  required placeholder="Enter the todo name..." id="name">
     </div>
-    <div class="mb-3">
+    <div class="mb-3">        
         <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" name="description" required id="description"></textarea>
+        <textarea class="form-control" name="description" required id="description">{{generated_description}}</textarea>
     </div>
     <div class="col-12">
         <label for="Status">Status</label>
         <select class="form-select" name="status" required id="Status">
-            <option value="Done">Done</option>
-            <option value="In progress">In Progress</option>
-            <option value="Not Done">Not Done</option>
+            {% if status == 'Done' %}
+                <option value="Done" selected>Done</option>
+                <option value="In progress">In Progress</option>
+                <option value="Not Done">Not Done</option>
+            {% elif status == 'In progress' %}
+                <option value="Done" >Done</option>
+                <option value="In progress" selected>In Progress</option>
+                <option value="Not Done">Not Done</option>
+            {% else %}
+                <option value="Done">Done</option>
+                <option value="In progress">In Progress</option>
+                <option value="Not Done" selected>Not Done</option>
+            {% endif%}
         </select>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" name="action" value="create">Submit</button><button type="button" class="btn btn-dark" name="action" value="generate">Create Description with AI</button>
 </form>
     
 </body>
