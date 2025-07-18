@@ -12,19 +12,27 @@ def create_todo(request):
     if request.method == 'POST':
         action = request.POST.get('action')
         if action == 'create':
-            name = request.POST.get('name')        
-            description = request.POST.get('description')        
-            status = request.POST.get('status')      
+            name = request.POST.get('name')
+            description = request.POST.get('description')
+            status = request.POST.get('status')
 
-            Todo.objects.create(name=name, description=description, status=status) 
-            return redirect('home')
+            Todo.objects.create(
+                name = name, 
+                description = description, 
+                status = status
+                )
+            # Todo.objects.create(**request.POST)
+            return redirect('home') 
+        
         elif action == 'generate':
             name = request.POST.get('name')
-            status = request.POST.get('status')
             generated_description = create_description_with_ai(name)
-            dict_generated_description = json.loads(generated_description)
-            return render(request, 'create.html', context={'generated_description':dict_generated_description('description'), 'name':name})
-    return render(request, 'create.html')
+            dic_generated_description = json.loads(generated_description)  # Convert JSON string to Python dictionary
+            status = request.POST.get('status')
+            # Call the AI function to generate description
+            return render(request, 'create.html', context={'generated_description': dic_generated_description.get('description'), 'name': name, 'status': status})
+    
+    return render(request, 'create.html', context={"message": "Todo created successfully!"})
 
 
 def edit_todo(request, pk):

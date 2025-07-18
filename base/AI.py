@@ -9,20 +9,21 @@ def create_description_with_ai(todo_title):
         messages=[
         {
             "role": "system",
-            "content": "You are helpful AI agent. Respond in json."
+            "content": "you are descriptionist for todo. Respond in json format with only"
         },
         {
             "role": "user",
-            "content": f"Give me a brief description for my todo : {todo_title}"
+            "content": f"give me a breif description according for todo title : {todo_title}"
         }
-        
         ],
         temperature=1,
-        max_completion_tokens=1024,
+        max_completion_tokens=300,
         top_p=1,
-        stream=True,
+        stream=False,
+        response_format={"type": "json_object"},
         stop=None,
     )
 
     return completion.choices[0].message.content
+
 

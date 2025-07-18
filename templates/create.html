@@ -12,11 +12,11 @@
     {% csrf_token %}
     <div class="mb-3">
             <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" name="name"  required placeholder="Enter the todo name..." id="name">
+            <input type="text" class="form-control" id="name" value="{{name}}" placeholder="Enter todo name" name="name" required />
     </div>
     <div class="mb-3">        
         <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" name="description" required id="description">{{generated_description}}</textarea>
+        <textarea name="description" rows="3" type="text"  class="form-control" placeholder="add description here" id="description" style="height: 100px">{{generated_description}}</textarea>
     </div>
     <div class="col-12">
         <label for="Status">Status</label>
@@ -36,7 +36,8 @@
             {% endif%}
         </select>
     </div>
-    <button type="submit" class="btn btn-primary" name="action" value="create">Submit</button><button type="button" class="btn btn-dark" name="action" value="generate">Create Description with AI</button>
+    <button type="submit" class="btn btn-primary" name="action" value="create">Submit</button>           
+    <Button class="btn btn-dark" name="action" value="generate" type="submit">description with ai</Button>
 </form>
     
 </body>

@@ -10,23 +10,21 @@
 </head>
 <body>
     {% include 'nav.html' %}
-    {% block content %}
-
-    {% endblock %}
     <table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Name</th>
-      <th scope="col">Description</th>
-      <th scope="col">Status</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Status</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+    <tbody>
     {% for i in todos %}
       <tr>
-        <th scope="row">{{i.id}}</th>
+        <!-- <th scope="row">{{i.id}}</th> -->
+        <th scope="row">{{ forloop.counter }}</th>
         <td>{{i.name}}</td>
         <td>{{i.description}}</td>
         <td>{{i.status}}</td>
